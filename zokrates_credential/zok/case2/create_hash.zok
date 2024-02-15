@@ -1,0 +1,15 @@
+import "hashes/sha256/512bitPacked" as sha256packed;
+
+def main(private field context_hash, private field id_hash, private field credential_type_hash, private field issuer_hash, private field credential_subject_hash, private field alumni_of_hash, private field age, private field exp) -> field[2] {
+    // 첫 번째 4개 입력에 대한 해시 계산
+    field[2] first_hash = sha256packed([context_hash, id_hash, credential_type_hash, issuer_hash]);
+    
+    // 두 번째 4개 입력에 대한 해시 계산
+    field[2] second_hash = sha256packed([credential_subject_hash, alumni_of_hash, age, exp]);
+    
+    // 첫 번째 및 두 번째 해시 결과를 다시 해시하여 최종 해시를 계산
+    field[2] final_hash = sha256packed([first_hash[0], first_hash[1], second_hash[0], second_hash[1]]);
+    
+    // 최종 해시 결과 반환
+    return final_hash;
+}
