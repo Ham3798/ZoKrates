@@ -1,7 +1,7 @@
 use serde::{Serialize, Deserialize};
-    use jsonwebtoken::{encode, decode, Header, Algorithm, Validation, EncodingKey, DecodingKey};
-    use std::fs;
-    use chrono::{DateTime, Utc, Duration};
+use jsonwebtoken::{encode, decode, Header, Algorithm, Validation, EncodingKey, DecodingKey};
+use std::fs;
+use chrono::{DateTime, Utc, Duration};
 
     #[derive(Debug, Serialize, Deserialize, Clone)]
     struct Claims {
