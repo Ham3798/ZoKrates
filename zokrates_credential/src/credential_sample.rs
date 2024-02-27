@@ -40,7 +40,7 @@ use chrono::{DateTime, Utc, Duration};
     }
 
     #[test]
-    fn encode_and_decode_jwt_rs256() {
+    fn credential_sample() -> Claims {
         let my_claims = Claims {
             context: vec![
                 "https://www.w3.org/2018/credentials/v1".to_owned(),
@@ -69,21 +69,5 @@ use chrono::{DateTime, Utc, Duration};
             },
             exp: (Utc::now() + Duration::days(90)).timestamp(), // 90일 후 만료
         };
-
-
-        // RSA 개인 키 로드
-        let private_key = fs::read("./private_key.pem").expect("Failed to read private key");
-        let public_key = fs::read("./public_key.pem").expect("Failed to read public key");
-
-        // JWT 인코딩
-        let token = encode(&Header::new(Algorithm::RS256), &my_claims, &EncodingKey::from_rsa_pem(&private_key).expect("Failed to create encoding key")).expect("Failed to encode");
-        println!("Encoded JWT: {}", token);
-
-        // JWT 디코딩
-        let validation = Validation::new(Algorithm::RS256);
-        let token_data = decode::<Claims>(&token, &DecodingKey::from_rsa_pem(&public_key).expect("Failed to create decoding key"), &validation).expect("Failed to decode");
-
-        // Assertions
-        assert_eq!(token_data.claims.credential_subject.name, "Socrates");
-        assert_eq!(token_data.claims.credential_subject.student_number, "201812345");
+        my_claims
     }

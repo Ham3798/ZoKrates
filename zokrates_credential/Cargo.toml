@@ -6,6 +6,8 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+zokrates_ast = { version = "0.1", path = "../zokrates_ast", default-features = false }
+zokrates_field = { version = "0.5", path = "../zokrates_field", features = ["multicore"] }
 jsonwebtoken = "9"
 # If you do not need pem decoding, you can disable the default feature `use_pem` that way:
 # jsonwebtoken = {version = "9", default-features = false }

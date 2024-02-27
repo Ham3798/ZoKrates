@@ -4179,6 +4179,8 @@ dependencies = [
  "serde",
  "serde_json",
  "sha2 0.9.9",
+ "zokrates_ast",
+ "zokrates_field",
 ]
 
 [[package]]
