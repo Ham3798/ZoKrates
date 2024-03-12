@@ -4174,6 +4174,7 @@ dependencies = [
  "base64 0.13.1",
  "chrono",
  "ed25519-dalek",
+ "hex 0.4.3",
  "jsonwebtoken",
  "rand 0.7.3",
  "serde",

@@ -1,3 +1,9 @@
+//! This code is copied from https://github.com/ethereum/py_ecc/blob/master/py_ecc/bn128/bn128_curve.py
+//! Author is Vitalik Buterin.
+//! Unfortunately the field modulus is not generic in this implementation, hence we had to copy the file.
+//! All changes from our side are denoted with #CHANGE.
+
+
 use zokrates_field::Field;
 
 // BabyJubJubParams 구조체 정의
